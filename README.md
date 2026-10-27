@@ -165,4 +165,50 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
      
         --output_path "dense\object_mesh.ply" ^
      
-        --PoissonMeshing.trim 7   
+        --PoissonMeshing.trim 7
+
+
+     
+![colmap_photogram_01](/images/Screenshot_04.png)
+
+
+![colmap_photogram_01](/images/Screenshot_05.png)
+     
+
+13. *this model can get really really large, in my case I aimed for a smaller mesh resolution with these flags:*
+
+
+      colmap poisson_mesher ^
+    
+       --input_path dense\fused.ply ^
+    
+       --output_path dense\object_mesh.ply ^
+    
+       --PoissonMeshing.depth 11 ^
+    
+       --PoissonMeshing.trim 7
+
+
+14. mkdir "%DATASET%/dense/textured"
+
+
+15. *the cool part, where textures is added per face from the photo sequence:*
+
+
+      colmap mesh_texturer ^
+    
+       --workspace_path "%DATASET%/dense" ^
+    
+       --input_path "%DATASET%/dense/object_mesh.ply" ^
+    
+       --output_path "%DATASET%/dense/textured"
+
+
+
+![colmap_photogram_01](/images/Screenshot_06.png)
+
+
+![colmap_photogram_01](/images/Screenshot_07.png)
+
+
+![colmap_photogram_01](/images/Screenshot_08.png)
