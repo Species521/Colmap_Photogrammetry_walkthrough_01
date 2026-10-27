@@ -1,4 +1,4 @@
-#### Colmap Photogrammetry
+### Colmap Photogrammetry
 
 
 
@@ -6,7 +6,7 @@ This walkthrough is meant to for a local build \& python environment, with a wel
 
 
 
-###### Prerequisites
+#### Prerequisites
 
 
 
