@@ -1,4 +1,4 @@
-!\[colmap\_photogram\_01](/images/Screenshot_09.png)
+![colmap_photogram_01](/images/Screenshot_09.png)
 
 ## 
 
@@ -8,7 +8,7 @@
 
 
 
-This walkthrough is meant to for a local build \& python environment, with a well-defined photo sequence for SfM pipelines
+This walkthrough is meant to for a local build & python environment, with a well-defined photo sequence for SfM pipelines
 
 
 
