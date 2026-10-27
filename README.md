@@ -17,6 +17,7 @@ This walkthrough is meant for a local build & python environment, with a well-de
 
 ### Prerequisites
 
+• a clean photo sequence, ideally focus-stacked in /images, a corresponding mask set with the exact names of their original photos in /masks 
 
 • colmap 4.2.x with CUDA, download here: github.com/colmap/colmap/releases
 
@@ -44,7 +45,7 @@ This walkthrough is meant for a local build & python environment, with a well-de
     --ImageReader.mask_path "%DATASET%/masks"
    
 
-4. *these settings are specific for a DISC3D scan but works for most cases with a clean camera path*
+3. *these settings are specific for a DISC3D scan but works for most cases with a clean camera path:*
 
    
    colmap sequential_matcher ^
@@ -56,10 +57,10 @@ This walkthrough is meant for a local build & python environment, with a well-de
     --SequentialMatching.loop_detection 1
 
 
-5. mkdir "%DATASET%/sparse"
+4. mkdir "%DATASET%/sparse"
 
    
-6. colmap mapper ^
+5. colmap mapper ^
    
     --database_path "%DATASET%/database.db" ^
    
@@ -68,10 +69,10 @@ This walkthrough is meant for a local build & python environment, with a well-de
     --output_path "%DATASET%/sparse"
 
 
-7. mkdir "%DATASET%/dense"
+6. mkdir "%DATASET%/dense"
 
 
-8. colmap image_undistorter ^
+7. colmap image_undistorter ^
    
     --image_path "%DATASET%/images" ^
    
@@ -94,3 +95,74 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
 
 ![colmap_photogram_01](/images/Screenshot_03.png)
 
+
+
+8. *this will provide the photometric as well as the geometric data, both are required for a clean photogrammetric model:*
+
+
+    colmap patch_match_stereo ^
+   
+     --workspace_path "%DATASET%/dense" ^
+   
+     --workspace_format COLMAP ^
+   
+     --PatchMatchStereo.geom_consistency true ^
+   
+     --PatchMatchStereo.filter true ^
+   
+     --PatchMatchStereo.filter_min_ncc 0.15 ^
+   
+     --PatchMatchStereo.filter_min_triangulation_angle 3 ^
+   
+     --PatchMatchStereo.filter_min_num_consistent 3 ^
+   
+     --PatchMatchStereo.max_image_size 1400
+
+
+   *the max_image_size value can be set significantly higher for a better resolution, depending on the available system RAM*
+
+ 
+  
+      
+9. colmap stereo_fusion ^
+      
+    --workspace_path "%DATASET%/dense" ^
+      
+    --workspace_format COLMAP ^
+   
+    --input_type geometric ^
+   
+    --output_path "%DATASET%/dense/fused.ply" ^
+   
+    --StereoFusion.mask_path "%DATASET%/masks" ^
+   
+    --StereoFusion.min_num_pixels 5 ^
+   
+    --StereoFusion.max_reproj_error 1 ^
+   
+    --StereoFusion.max_depth_error 0.01 ^
+   
+    --StereoFusion.max_normal_error 10 ^
+   
+    --StereoFusion.check_num_images 50 ^
+   
+    --StereoFusion.max_image_size 1400 ^
+   
+    --StereoFusion.num_threads 4 ^
+   
+    --StereoFusion.cache_size 4
+    
+
+10.  *at this point I recommend a point cloud cleanup, eg in CloudCompare, in order to prevent artefacts and floating geometry*
+    
+    
+11.  *here the actual mesh is generated:*
+    
+
+      colmap poisson_mesher ^
+     
+        --input_path "dense\fused.ply" ^
+     
+        --output_path "dense\object_mesh.ply" ^
+     
+        --PoissonMeshing.trim 7   
