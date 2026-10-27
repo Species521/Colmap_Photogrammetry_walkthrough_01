@@ -28,7 +28,7 @@ This walkthrough is meant for a local build & python environment, with a well-de
 
 ### Command Chain
 
-1. set your project path:
+1. *set your project path:*
    
    set "DATASET=[PATH_TO_PROJECt]"
 
@@ -41,7 +41,7 @@ This walkthrough is meant for a local build & python environment, with a well-de
     --ImageReader.mask_path "%DATASET%/masks"
    
 
-4. these settings are specific for a clean DISC3D scan but works for most cases with a clean camera path
+4. *these settings are specific for a DISC3D scan but works for most cases with a clean camera path*
 
    
    colmap sequential_matcher ^
@@ -53,5 +53,37 @@ This walkthrough is meant for a local build & python environment, with a well-de
     --SequentialMatching.loop_detection 1
 
 
-8. 
+5. mkdir "%DATASET%/sparse"
+
+   
+6. colmap mapper ^
+   
+    --database_path "%DATASET%/database.db" ^
+   
+    --image_path "%DATASET%/images" ^
+   
+    --output_path "%DATASET%/sparse"
+
+
+7. mkdir "%DATASET%/dense"
+
+
+8. colmap image_undistorter ^
+   
+    --image_path "%DATASET%/images" ^
+   
+    --input_path "%DATASET%/sparse/1" ^
+   
+    --output_path "%DATASET%/dense" ^
+   
+    --output_type COLMAP
+
+
+![colmap_photogram_01](/images/Screenshot_01.png)
+
+
+![colmap_photogram_01](/images/Screenshot_02.png)
+
+
+![colmap_photogram_01](/images/Screenshot_03.png)
 
