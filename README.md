@@ -79,6 +79,10 @@ This walkthrough is meant for a local build & python environment, with a well-de
     --output_type COLMAP
 
 
+
+This results in a Dense Point Cloud in /dense, these were the unedited results:
+
+
 ![colmap_photogram_01](/images/Screenshot_01.png)
 
 
