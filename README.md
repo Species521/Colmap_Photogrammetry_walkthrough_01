@@ -173,9 +173,9 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
 
       colmap poisson_mesher ^
      
-        --input_path "dense\fused.ply" ^
+        --input_path "%DATASET%\dense\fused.ply" ^
      
-        --output_path "dense\object_mesh.ply" ^
+        --output_path "%DATASET%\dense\object_mesh.ply" ^
      
         --PoissonMeshing.trim 7
 
@@ -193,9 +193,9 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
 
       colmap poisson_mesher ^
     
-       --input_path dense\fused.ply ^
+       --input_path "%DATASET%/dense/fused.ply" ^
     
-       --output_path dense\object_mesh.ply ^
+       --output_path "%DATASET%/dense/object_mesh.ply" ^
     
        --PoissonMeshing.depth 11 ^
     
