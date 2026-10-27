@@ -1,4 +1,4 @@
-!\[colmap\_photogram\_01](images/Screenshot%202026-10-27%20143821.png)
+!\[colmap\_photogram\_01](images/Screenshot\_09.png)
 
 ## 
 
