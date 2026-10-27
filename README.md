@@ -29,19 +29,29 @@ This walkthrough is meant for a local build & python environment, with a well-de
 ### Command Chain
 
 1. set your project path:
+   
    set "DATASET=[PATH_TO_PROJECt]"
 
 2. colmap feature_extractor ^
+   
     --database_path "%DATASET%/database.db" ^
+   
     --image_path "%DATASET%/images" ^
+   
     --ImageReader.mask_path "%DATASET%/masks"
+   
 
-3. these settings are specific for a clean DISC3D scan but works for most cases with a clean camera path
+4. these settings are specific for a clean DISC3D scan but works for most cases with a clean camera path
+
    
    colmap sequential_matcher ^
+   
     --database_path "%DATASET%/database.db" ^
+   
     --SequentialMatching.overlap 10 ^
+   
     --SequentialMatching.loop_detection 1
 
-5. 
+
+8. 
 
