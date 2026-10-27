@@ -1,4 +1,4 @@
-!\[colmap\_photogram\_01](/images/Screenshot\_09.png)
+!\[colmap\_photogram\_01](\\images\\Screenshot\_09.png)
 
 ## 
 
