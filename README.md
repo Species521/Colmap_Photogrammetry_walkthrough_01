@@ -46,12 +46,13 @@ Project folder hierarchy:
 
 ### Command Chain
 
+<br>
+<br>
 
 1. *set your project path:*
    
    set "DATASET=[PATH_TO_PROJECT]"
 
-<br>
 <br>
 <br>
 
@@ -62,8 +63,10 @@ Project folder hierarchy:
     --image_path "%DATASET%/images" ^
    
     --ImageReader.mask_path "%DATASET%/masks"
-   
 
+   
+<br>
+<br>
 
 3. *these settings are specific for a DISC3D scan but works for most cases with a clean camera path:*
 
@@ -77,9 +80,13 @@ Project folder hierarchy:
     --SequentialMatching.loop_detection 1
 
 
+<br>
+<br>
+
 4. mkdir "%DATASET%/sparse"
 
-
+<br>
+<br>
    
 5. colmap mapper ^
    
@@ -89,11 +96,13 @@ Project folder hierarchy:
    
     --output_path "%DATASET%/sparse"
 
-
+<br>
+<br>
 
 6. mkdir "%DATASET%/dense"
 
-
+<br>
+<br>
 
 7. colmap image_undistorter ^
    
@@ -122,6 +131,9 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
 
 #
 
+<br>
+<br>
+
 8. *this will provide the photometric as well as the geometric data, both are required for a clean photogrammetric model:*
 
 
@@ -148,7 +160,8 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
    *the max_image_size value can be set significantly higher for a better resolution, depending on the available system RAM*
 
  
-  
+<br>
+<br>
       
 9. colmap stereo_fusion ^
       
@@ -178,11 +191,13 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
    
     --StereoFusion.cache_size 4
     
-
+<br>
+<br>
 
 10.  *at this point I recommend a point cloud cleanup, eg in CloudCompare, in order to prevent artefacts and floating geometry*
     
-
+<br>
+<br>
     
 11.  *here the actual mesh is generated:*
     
@@ -194,6 +209,8 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
         --output_path "%DATASET%\dense\object_mesh.ply" ^
      
         --PoissonMeshing.trim 7
+<br>
+<br>
 
 #
      
@@ -203,6 +220,9 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
 ![colmap_photogram_01](/images/Screenshot_05.png)
      
 #
+
+<br>
+<br>
 
 13. *this model can get really really large, in my case I aimed for a smaller mesh resolution with these flags:*
 
@@ -217,11 +237,13 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
     
        --PoissonMeshing.trim 7
 
-
+<br>
+<br>
 
 14. mkdir "%DATASET%/dense/textured"
 
-
+<br>
+<br>
 
 15. *the cool part, where textures is added per face from the photo sequence:*
 
@@ -233,6 +255,9 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
        --input_path "%DATASET%/dense/object_mesh.ply" ^
     
        --output_path "%DATASET%/dense/textured"
+
+<br>
+<br>
 
 #
 
