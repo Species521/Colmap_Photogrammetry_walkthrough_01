@@ -18,6 +18,17 @@ The result from this run still has artefacts and inaccuracies, which can be sign
 
 ### Prerequisites
 
+
+Project folder hierarchy:
+
+
+   project root folder
+   │
+   ├── images
+   └── masks
+
+
+
 • a clean photo sequence, ideally focus-stacked in /images, a corresponding mask set with the exact names of their original photos in /masks 
 
 • colmap 4.2.x with CUDA, download here: github.com/colmap/colmap/releases
@@ -37,7 +48,7 @@ The result from this run still has artefacts and inaccuracies, which can be sign
 
 1. *set your project path:*
    
-   set "DATASET=[PATH_TO_PROJECt]"
+   set "DATASET=[PATH_TO_PROJECT]"
 
 
 
@@ -92,6 +103,7 @@ The result from this run still has artefacts and inaccuracies, which can be sign
     --output_type COLMAP
 
 
+#
 
 This results in a Dense Point Cloud in /dense, these were the unedited results:
 
@@ -105,7 +117,7 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
 
 ![colmap_photogram_01](/images/Screenshot_03.png)
 
-
+#
 
 8. *this will provide the photometric as well as the geometric data, both are required for a clean photogrammetric model:*
 
@@ -180,14 +192,14 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
      
         --PoissonMeshing.trim 7
 
-
+#
      
 ![colmap_photogram_01](/images/Screenshot_04.png)
 
 
 ![colmap_photogram_01](/images/Screenshot_05.png)
      
-
+#
 
 13. *this model can get really really large, in my case I aimed for a smaller mesh resolution with these flags:*
 
