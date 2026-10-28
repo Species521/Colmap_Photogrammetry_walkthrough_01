@@ -14,20 +14,20 @@
 This walkthrough is meant for a local build & python environment, with a well-defined photo sequence for SfM pipelines.
 The result from this run still has artefacts and inaccuracies, which can be significantly reduced by point cloud cleanups and higher resolution settings. 
 
-<br>
+
 
 ### Prerequisites
 
-<br>
+
 
 Project folder hierarchy:
 
-
-&ensp project root folder
-&ensp │
-&ensp ├── images
-&ensp └── masks
-
+```
+   project root folder
+    │
+    ├── images
+    └── masks
+```
 
 
 • a clean photo sequence, ideally focus-stacked in /images, a corresponding mask set with the exact names of their original photos in /masks 
