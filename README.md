@@ -23,7 +23,7 @@ The result from this run still has artefacts and inaccuracies, which can be sign
 Project folder hierarchy:
 
 ```
-   project root folder
+    project root folder
     │
     ├── images
     └── masks
@@ -51,7 +51,9 @@ Project folder hierarchy:
    
    set "DATASET=[PATH_TO_PROJECT]"
 
-
+<br>
+<br>
+<br>
 
 2. colmap feature_extractor ^
    
@@ -232,7 +234,7 @@ This results in a Dense Point Cloud in /dense, these were the unedited results:
     
        --output_path "%DATASET%/dense/textured"
 
-
+#
 
 ![colmap_photogram_01](/images/Screenshot_06.png)
 
