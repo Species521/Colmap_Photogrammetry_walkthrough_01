@@ -22,10 +22,10 @@ The result from this run still has artefacts and inaccuracies, which can be sign
 Project folder hierarchy:
 
 
-   project root folder
-   │
-   ├── images
-   └── masks
+  - project root folder
+  - │
+  - ├── images
+  - └── masks
 
 
 
